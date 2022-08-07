@@ -17,3 +17,10 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.total {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgb(225, 225, 225);
+  font-weight: bold;
+}

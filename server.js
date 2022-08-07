@@ -31,7 +31,7 @@ app.get("/cars", (req, res) => {
 });
 
 app.post("/addVehicle", (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
   const { ro, vehicle, insurance, hrs } = req.body;
   sequelize
     .query(
@@ -45,57 +45,54 @@ app.post("/addVehicle", (req, res) => {
     });
 });
 
-app.post("/cart", (req, res) => {
-  console.log(req.body);
-  const { id, user } = req.body;
+app.get("/hrs", (req, res) => {
   sequelize
-    .query(
-      `
-      INSERT INTO cart (item_id, user_id)
-      VALUES(${id}, ${user})
-    `
-    )
-    .then(() => {
-      res.status(200).send();
-    });
-});
+  .query(`
+      SELECT SUM(hrs) FROM cars  
+  `)
+  .then((dbres) => {
+    res.status(200).send(dbres);
+  })
+})
 
-app.get("/cart/:id", (req, res) => {
-  const { id } = req.params;
-  sequelize
-    .query(
-      `
-      SELECT u.id, u.user_id, p.item_id, p.item, p.description, p.price, p.url 
-      FROM cart u 
-      JOIN products p 
-      ON u.item_id = p.item_id 
-      WHERE u.user_id = ${id};
-  `
-    )
-    .then((dbres) => {
-      res.status(200).send(dbres[0]);
-    });
-});
 
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  sequelize
-    .query(
-      `
-    SELECT id, first_name, last_name, email FROM signup
-    WHERE email = '${email}' AND password = '${password}'
-    `
-    )
-    .then((dbres) => {
-      if (dbres[0].length === 0) {
-        return res.status(401).send("No User With Those Credentials");
-      } else {
-        console.log(dbres);
-        res.status(200).send(dbres[0]);
-      }
-    })
-    .catch((err) => res.status(401).send("No User With Those Credentials"));
-});
+
+// app.get("/cart/:id", (req, res) => {
+//   const { id } = req.params;
+//   sequelize
+//     .query(
+//       `
+//       SELECT u.id, u.user_id, p.item_id, p.item, p.description, p.price, p.url 
+//       FROM cart u 
+//       JOIN products p 
+//       ON u.item_id = p.item_id 
+//       WHERE u.user_id = ${id};
+//   `
+//     )
+//     .then((dbres) => {
+//       res.status(200).send(dbres[0]);
+//     });
+// });
+
+// app.post("/login", (req, res) => {
+//   const { email, password } = req.body;
+//   sequelize
+//     .query(
+//       `
+//     SELECT id, first_name, last_name, email FROM signup
+//     WHERE email = '${email}' AND password = '${password}'
+//     `
+//     )
+//     .then((dbres) => {
+//       if (dbres[0].length === 0) {
+//         return res.status(401).send("No User With Those Credentials");
+//       } else {
+//         console.log(dbres);
+//         res.status(200).send(dbres[0]);
+//       }
+//     })
+//     .catch((err) => res.status(401).send("No User With Those Credentials"));
+// });
 
 app.delete("/delete/:id", (req, res) => {
   const { id } = req.params;

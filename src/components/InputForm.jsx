@@ -15,9 +15,9 @@ function Input() {
       insurance,
       hrs
     }
-    // console.log(body)
-    axios.post('http://localhost:3000/addVehicle', body).then(res => {
-      console.log(res.data)
+    console.log(body)
+    axios.post('http://localhost:3333/addVehicle', body).then(res => {
+      console.log(res.body)
     })
   }
 

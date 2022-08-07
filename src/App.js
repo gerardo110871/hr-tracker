@@ -2,6 +2,7 @@ import './App.css';
 import InputForm from './components/InputForm'
 import List from './components/List'
 import Data from './components/Data'
+import TotalHours from './components/TotalHours'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
     <InputForm />
     <Data />
     <List />
+    <TotalHours />
     </>
   )
 }
