@@ -55,6 +55,15 @@ app.get("/hrs", (req, res) => {
   })
 })
 
+app.delete("/deleteAll", (req, res) => {
+  sequelize
+  .query(`
+    delete from cars
+  `)
+  .then((dbres) => {
+    res.status(200).send(dbres);
+  })
+})
 
 
 // app.get("/cart/:id", (req, res) => {
