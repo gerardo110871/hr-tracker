@@ -1,8 +1,15 @@
-import { React, useState } from "react";
-import axios from "axios";
+import { React } from "react";
 
-function List() {
-  return <div className="list"></div>;
+function List({ ro, vehicle, insurance, hrs }) {
+  // console.log(ro)
+  return (
+    <div className="list-container">
+      <p>{ro}</p>
+      <p>{vehicle}</p>
+      <p>{insurance}</p>
+      <p>{hrs}</p>
+    </div>
+  );
 }
 
 export default List;

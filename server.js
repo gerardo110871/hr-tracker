@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -30,14 +30,14 @@ app.get("/cars", (req, res) => {
     });
 });
 
-app.post("/signup", (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+app.post("/addVehicle", (req, res) => {
+  // console.log(req.body)
+  const { ro, vehicle, insurance, hrs } = req.body;
   sequelize
     .query(
       `
-      INSERT INTO signup (first_name, last_name, email, password)
-      VALUES('${firstName}', '${lastName}', '${email}', '${password}')
-      RETURNING id, first_name, last_name, email
+      INSERT INTO cars ("ro", "vehicle", "insurance", "hrs")
+      VALUES('${ro}', '${vehicle}', '${insurance}', '${hrs}')
     `
     )
     .then((dbres) => {

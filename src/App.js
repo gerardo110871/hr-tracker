@@ -7,8 +7,8 @@ function App() {
   return (
     <>
     <InputForm />
-    <List />
     <Data />
+    <List />
     </>
   )
 }

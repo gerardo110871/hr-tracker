@@ -10,9 +10,13 @@ function Input() {
 
   function addVehicle() {
     const body = {
-      
+      ro,
+      vehicle,
+      insurance,
+      hrs
     }
-    axios.post('http://localhost:3000/cars', body).then(res => {
+    // console.log(body)
+    axios.post('http://localhost:3000/addVehicle', body).then(res => {
       console.log(res.data)
     })
   }
@@ -28,7 +32,7 @@ function Input() {
         <input className="input" type="text" placeholder="Insurance" value={insurance} onChange={(e) => setInsurance(e.target.value)}></input>
         <input className="input" type="text" placeholder="HRS" value={hrs} onChange={(e) => setHrs(e.target.value)}></input>
         {/* <input type="text" placeholder=""></input> */}
-        <button className="input" type="submit" onClick={addVehicle}>ADD JOB</button>
+        <button className="input" type="submit" onClick={addVehicle} >ADD JOB</button>
       </form>
       
     </div>

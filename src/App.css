@@ -1,7 +1,7 @@
 * {
   margin: 0;
-  color:white;
-  background-color: black;
+  color: white;
+  background-color: rgb(48, 48, 48);
 }
 
 .form {
@@ -12,10 +12,8 @@
   background-color: rgb(45, 45, 45);
 }
 
-.list {
-  margin-top: 20px;
-  padding: 0.5em;
-  border: 1px solid black;
-  height: 600px;
-  background-color: rgb(45, 45, 45);
+.list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
